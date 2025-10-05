@@ -30,7 +30,7 @@ export const Signup = () => {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700">
+    <div className="flex items-center justify-center min-h-screen backgroundimg">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-[90%] max-w-md">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Sign Up
@@ -42,7 +42,7 @@ export const Signup = () => {
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           />
           <input
             type="text"
@@ -50,7 +50,7 @@ export const Signup = () => {
             placeholder="Last Name"
             value={formData.lastName}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           />
           <input
             type="email"
@@ -58,7 +58,7 @@ export const Signup = () => {
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           />
           <input
             type="password"
@@ -66,7 +66,7 @@ export const Signup = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           />
           <input
             type="tel"
@@ -74,19 +74,19 @@ export const Signup = () => {
             placeholder="Phone Number"
             value={formData.phoneNumber}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           />
           <button
             type="submit"
-            className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-lg"
+            className="mt-4 bg-gray-900 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-lg"
           >
             Create Account
           </button>
         </form>
-        <p className="text-center text-sm text-gray-600 mt-4">
+        <p className="text-center text-sm text-gray-400 mt-4">
           Already have an account?{" "}
           <Link to='/login'
-            className="text-indigo-600 font-semibold hover:underline"
+            className="text-black font-semibold hover:underline"
           >
             Log in
           </Link>

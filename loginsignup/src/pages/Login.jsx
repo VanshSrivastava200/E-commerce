@@ -27,7 +27,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700">
+    <div className="flex items-center justify-center min-h-screen backgroundimg">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-[90%] max-w-md">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Login
@@ -56,15 +56,15 @@ export const Login = () => {
           />
           <button
             type="submit"
-            className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-lg"
+            className="mt-4 bg-gray-900 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-lg"
           >
             Login
           </button>
         </form>
-        <div className="text-center text-sm text-gray-600 mt-4">
+        <div className="text-center text-sm text-gray-400 mt-4">
           Don't have an account?{" "}
           <Link to='/signup'
-            className="text-indigo-600 font-semibold hover:underline"
+            className="text-black font-semibold hover:underline"
           >
             Sign Up
           </Link>
