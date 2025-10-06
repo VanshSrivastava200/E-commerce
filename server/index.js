@@ -29,7 +29,7 @@ app.post('/signup',async (req,res)=>{
 
 app.post('/login',async(req,res)=>{
     const {email,password}=req.body
-    const userData=await User.findOne({email:email}).then(
+    await User.findOne({email:email}).then(
         user=>{
             if(user){
                 if(user.password==password){
@@ -44,6 +44,18 @@ app.post('/login',async(req,res)=>{
             }
         }
     )
+})
+
+app.post('/home',async (req,res)=>{
+    const {email}=req.body
+    const user = await User.findOne({email}).select("-password")
+    if(user){
+        res.json(user)
+        console.log(user)
+    }
+    else{
+        console.log("no user found")
+    }
 })
 
 app.listen(port,()=>{

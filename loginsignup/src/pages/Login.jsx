@@ -19,7 +19,8 @@ export const Login = () => {
       console.log(result)
         if(result.data==='Success'){
             console.log(true)
-            navigate('/Home')
+            localStorage.setItem('user',JSON.stringify(lformData.email))
+            navigate(`/home`)
         }
     }).catch((err)=>{
         console.log("login failed",err)
