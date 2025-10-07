@@ -14,6 +14,7 @@ const userSchema=new mongoose.Schema({
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true},
     phoneNumber:{type:Number,required:true},
+    category:{type:String,required:true},
     address:{
         houseno:{type:String},
         street:{type:String},
@@ -24,6 +25,7 @@ const userSchema=new mongoose.Schema({
 export const User=mongoose.model("User",userSchema)
 
 const productSchema=new mongoose.Schema({
+    seller:{type:String,required:true},
     name:{type:String,required:true},
     description:{type:String},
     price:{type:Number,required:true},

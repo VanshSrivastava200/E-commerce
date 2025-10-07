@@ -17,10 +17,14 @@ export const Login = () => {
     e.preventDefault();
     axios.post('http://localhost:3000/login',lformData).then((result)=>{
       console.log(result)
-        if(result.data==='Success'){
-            console.log(true)
-            localStorage.setItem('user',JSON.stringify(lformData.email))
-            navigate(`/home`)
+        if(result.data==='user'){
+          console.log(true)
+          localStorage.setItem('user',JSON.stringify(lformData.email))
+          navigate(`/home`)
+        }
+        else if(result.data==='seller'){
+          localStorage.setItem('user',JSON.stringify(lformData.email))
+          navigate(`/sellerdashboard`)
         }
     }).catch((err)=>{
         console.log("login failed",err)

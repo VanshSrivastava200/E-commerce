@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
@@ -9,25 +9,35 @@ export const Signup = () => {
     lastName: "",
     email: "",
     password: "",
-    phoneNumber: "",
+    phoneNumber: 0,
+    category: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const navigate =useNavigate()
+  const handleCategoryChange = (e) => {
+    if (e.target.checked === true) {
+      setFormData({ ...formData, category: e.target.value });
+      // console.log(e.target.value)
+    }
+  };
+  // console.log(formData.category)
+
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/signup',formData).then((result)=>{
-      console.log(result)
-      navigate('/login')
-    }).catch((err)=>{
-        console.log("Signup Failed",err)
+    axios
+      .post("http://localhost:3000/signup", formData)
+      .then((result) => {
+        console.log(result);
+        navigate("/login");
       })
-
-    }
-
+      .catch((err) => {
+        console.log("Signup Failed", err);
+      });
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen backgroundimg">
@@ -36,6 +46,34 @@ export const Signup = () => {
           Sign Up
         </h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className="flex items-center justify-around">
+            <div className="flex p-3 gap-2 justify-center items-center">
+              <input
+                onChange={(e) => {
+                  handleCategoryChange(e);
+                }}
+                className="h-5 w-5"
+                type="radio"
+                id="user"
+                name="category"
+                value="user"
+              />
+              <div>USER</div>
+            </div>
+            <div className="flex p-3 gap-2 justify-center items-center">
+              <input
+                onChange={(e) => {
+                  handleCategoryChange(e);
+                }}
+                type="radio"
+                className="h-5 w-5"
+                id="seller"
+                name="category"
+                value="seller"
+              />
+              <div>SELLER</div>
+            </div>
+          </div>
           <input
             type="text"
             name="firstName"
@@ -85,7 +123,8 @@ export const Signup = () => {
         </form>
         <p className="text-center text-sm text-gray-400 mt-4">
           Already have an account?{" "}
-          <Link to='/login'
+          <Link
+            to="/login"
             className="text-black font-semibold hover:underline"
           >
             Log in
@@ -94,5 +133,4 @@ export const Signup = () => {
       </div>
     </div>
   );
-
 };

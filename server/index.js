@@ -14,13 +14,14 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/signup',async (req,res)=>{
-  const {firstName,lastName,email,password,phoneNumber}=req.body
+  const {firstName,lastName,email,password,phoneNumber,category}=req.body
   const newUser= new User({
     firstName,
     lastName,
     email,
     password,
     phoneNumber,
+    category,
   })
   await newUser.save()
   console.log(newUser)
@@ -33,7 +34,7 @@ app.post('/login',async(req,res)=>{
         user=>{
             if(user){
                 if(user.password==password){
-                    res.json("Success")
+                    res.json(user.category)
                 }
                 else[
                     res.json("Incorrect Password")
@@ -48,13 +49,13 @@ app.post('/login',async(req,res)=>{
 
 app.post("/add-product", async (req, res) => {
   try {
-    const { name, description, price, category, stock, images } = req.body;
+    const { name, description, price, category, stock, images,seller } = req.body;
 
     if (!name || !price) {
       return res.status(400).json({ message: "Name and price are required" });
     }
-
     const newProduct = new Product({
+      seller,
       name,
       description,
       price,
@@ -83,7 +84,19 @@ app.post('/home',async (req,res)=>{
     }
 })
 
-app.get('/home', async (req, res) => {
+app.post('/sellerdashboard',async (req,res)=>{
+    const {email}=req.body
+    const user = await User.findOne({email}).select("-password")
+    if(user){
+        res.json(user)
+        console.log(user)
+    }
+    else{
+        console.log("no user found")
+    }
+})
+
+app.get('/home-search', async (req, res) => {
   const search = req.query.search;
 
   const query = search

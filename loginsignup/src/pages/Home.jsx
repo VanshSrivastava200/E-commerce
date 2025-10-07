@@ -62,7 +62,7 @@ export const Home = () => {
     e.preventDefault();
     // setHasSearched(true)
     try {
-      const res = await axios.get("http://localhost:3000/home", {
+      const res = await axios.get("http://localhost:3000/home-search", {
         params: { search: searchVal },
       });
       console.log(res.data);
@@ -74,7 +74,7 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen backgroundimg">
-      <div className="bg-gray-100/15 saturate-110 backdrop-blur-sm border border-white/20 p-4 relative items-center overflow-hidden flex flex-col shadow-2xl rounded-2xl w-[85%] h-[80%]">
+      <div className="bg-gray-100/45 saturate-110 backdrop-blur-sm border border-white/20 p-4 relative items-center overflow-hidden flex flex-col shadow-2xl rounded-2xl w-[95%] h-[95%]">
         <header className="w-full justify-between items-center flex ">
           <div
             onClick={() => {
@@ -86,11 +86,19 @@ export const Home = () => {
             <div className="h-2 w-2 bg-gray-400 rounded-full"></div>
             <div className="h-2 w-2 bg-gray-500 rounded-full"></div>
           </div>
-          <div></div>
+          <div className="tracking-tighter text-xl font-[700]">
+            {search.length !== 0 ? <>ShopEase</> : <></>}
+          </div>
         </header>
-        <div className=" mb-5 text-6xl tracking-tighter font-[700]">
-          ShopEase
-        </div>
+        {search.length === 0 ? (
+          <>
+            <div className=" mb-5 text-6xl tracking-tighter font-[700]">
+              ShopEase
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
         <div className="flex m-5 w-full justify-center">
           <input
             onChange={(e) => {
@@ -170,7 +178,7 @@ export const Home = () => {
 
         {search.length === 0 ? (
           <div className="grid grid-cols-5 gap-5 overflow-y-scroll no-scrollbar grid-rows-2 w-full h-full bg-red">
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://cdn.wccftech.com/wp-content/uploads/2025/03/iPhone-17-3-1.jpg"
@@ -178,7 +186,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">ELECTRONICS</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2024/09/lgscreensaverad_5-copy.jpg"
@@ -186,7 +194,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">ELECTRICALS</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full"
                 src="https://api.raymond.in/uploads/brand/1661149094350Made%20to%20mesure.jpg"
@@ -194,7 +202,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">MEN'S FASHION</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://www.medianews4u.com/wp-content/uploads/2021/10/Nykaa-Fashion-announces-Alaya-F-as-the-New-Face-of-The-Brand.jpg"
@@ -202,7 +210,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">WOMEN'S FASHION</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://www.watchonista.com/sites/default/files/watchographer/2914/articles/436874/front/fossil-ad_rectangle.jpg"
@@ -210,7 +218,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">WATCHES</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://i.pinimg.com/originals/c5/17/52/c517521e4f7b1b6bd11f064d8eddbfd6.jpg"
@@ -218,7 +226,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">FOOTWEAR</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://www.blockchaingamer.biz/wp-content/uploads/2022/11/adidas-impossible-is-nothing.jpg"
@@ -226,7 +234,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">SPORTS WEAR</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://s24.q4cdn.com/131595232/files/doc_multimedia/Untitled.jpg"
@@ -234,7 +242,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">ACCESSORIES</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://newspaperads.ads2publish.com/wp-content/uploads/2019/09/ellementry-com-kitchenware-tableware-ad-delhi-times-04-09-2019.png"
@@ -242,7 +250,7 @@ export const Home = () => {
               />
               <h1 className="h-[13%]">KITCHENWARE</h1>
             </div>
-            <div className="p-2 font-bold text-center text-white flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
+            <div className="p-2 font-bold text-center text-black flex flex-col gap-[7%] rounded-lg shadow-2xl bg-white/40">
               <img
                 className="object-cover rounded-md h-[80%] w-full "
                 src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/635743100801015.5f1085a028fe8.png"
@@ -252,20 +260,29 @@ export const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-4 text-sm gap-5 overflow-y-scroll no-scrollbar grid-rows-1 w-full h-full bg-red">
+          <div className="grid bg-white/60 rounded-md grid-cols-2 gap-0.5 overflow-y-scroll no-scrollbar grid-rows-3 w-full h-full ">
             {search.map((prod, index) => {
               return (
                 <div
                   key={index}
-                  className="p-2 font-bold text-black flex flex-col gap-1 rounded-lg shadow-2xl bg-white/40"
+                  className="p-2  gap-3 text-gray-700 flex flex-row rounded-xs border border-gray-400 bg-white/80"
                 >
-                  <img
-                    className="object-cover rounded-md h-[70%] w-full "
-                    src={prod.images[0]}
-                    alt={prod.name.toUpperCase()}
-                  />
-                  <h1 className="">{prod.name.toUpperCase()}</h1>
-                  <h1 className="text-end text-black text-xl">${prod.price}</h1>
+                  <div className="h-full rounded-sm w-[50%]">
+                    <img
+                      className="object-cover w-full h-full rounded-sm "
+                      src={prod.images[0]}
+                      alt={prod.name.toUpperCase()}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <h1 className="text-2xl font-semibold">{prod.name} {prod.seller}</h1>
+                    <p className="text-lg text-gray-600" >{prod.description}</p>
+                    <p className="text-xs" >({prod.stock} remaining)</p>
+                    <p className="text-xs" >⭐⭐⭐⭐⭐</p>
+                    <h1 className=" text-black font-semibold text-2xl">
+                      ${prod.price}
+                    </h1>
+                  </div>
                 </div>
               );
             })}
