@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const SellerDashboard = () => {
 
-
   const [productData, setProductData] = useState({
     name: "",
     seller: "",
