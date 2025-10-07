@@ -1,5 +1,5 @@
 import express from 'express'
-import { connectDB,User } from './db.js'
+import { connectDB,User,Product } from './db.js'
 import cors from 'cors'
 const app=express()
 const port=3000
@@ -46,6 +46,31 @@ app.post('/login',async(req,res)=>{
     )
 })
 
+app.post("/add-product", async (req, res) => {
+  try {
+    const { name, description, price, category, stock, images } = req.body;
+
+    if (!name || !price) {
+      return res.status(400).json({ message: "Name and price are required" });
+    }
+
+    const newProduct = new Product({
+      name,
+      description,
+      price,
+      category,
+      stock,
+      images
+    });
+
+    const savedProduct = await newProduct.save();
+    res.status(201).json(savedProduct);
+  } catch (error) {
+    console.error(error);  // <-- this will log the real error
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 app.post('/home',async (req,res)=>{
     const {email}=req.body
     const user = await User.findOne({email}).select("-password")
@@ -57,6 +82,30 @@ app.post('/home',async (req,res)=>{
         console.log("no user found")
     }
 })
+
+app.get('/home', async (req, res) => {
+  const search = req.query.search;
+
+  const query = search
+    ? {
+        $or: [
+          { name: { $regex: search, $options: "i" } },
+          { description: { $regex: search, $options: "i" } },
+          { category: { $elemMatch: { $regex: search, $options: "i" } } },
+        ],
+      }
+    : {};
+
+  try {
+    const products = await Product.find(query).limit(50); // optional limit
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 
 app.listen(port,()=>{
     console.log(`Server running at http://localhost:${port}`)
