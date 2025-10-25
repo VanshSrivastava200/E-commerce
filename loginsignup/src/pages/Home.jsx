@@ -152,7 +152,7 @@ export const Home = () => {
 
   const handlePlaceOrder = async () => {
     if (!currProd || !currUser) return;
-    
+
     try {
       // Add your order placement logic here
       console.log("Placing order for:", currProd);
@@ -229,8 +229,8 @@ export const Home = () => {
           </span>
         </h1>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-          Discover amazing products across all categories. Fast delivery,
-          great prices, and exceptional service.
+          Discover amazing products across all categories. Fast delivery, great
+          prices, and exceptional service.
         </p>
       </div>
 
@@ -329,7 +329,7 @@ export const Home = () => {
                   <span className="text-2xl font-bold text-gray-800">
                     ${prod.price}
                   </span>
-                  <button 
+                  <button
                     onClick={(e) => buyProduct(e, prod)}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
                   >
@@ -381,7 +381,10 @@ export const Home = () => {
               {currProd.images.length > 1 && (
                 <div className="grid grid-cols-4 gap-2">
                   {currProd.images.map((image, index) => (
-                    <div key={index} className="aspect-square overflow-hidden rounded border border-gray-200">
+                    <div
+                      key={index}
+                      className="aspect-square overflow-hidden rounded border border-gray-200"
+                    >
                       <img
                         className="w-full h-full object-cover"
                         src={image}
@@ -406,14 +409,18 @@ export const Home = () => {
                   <span className="text-3xl font-bold text-gray-800">
                     ${currProd.price}
                   </span>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    currProd.stock > 10 
-                      ? "bg-green-100 text-green-800"
-                      : currProd.stock > 0
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-red-100 text-red-800"
-                  }`}>
-                    {currProd.stock > 0 ? `${currProd.stock} in stock` : "Out of stock"}
+                  <span
+                    className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      currProd.stock > 10
+                        ? "bg-green-100 text-green-800"
+                        : currProd.stock > 0
+                        ? "bg-yellow-100 text-yellow-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
+                    {currProd.stock > 0
+                      ? `${currProd.stock} in stock`
+                      : "Out of stock"}
                   </span>
                 </div>
               </div>
@@ -560,7 +567,9 @@ export const Home = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md mx-4">
               <div className="flex justify-between items-center mb-4">
-                <p className="text-lg font-semibold">Enter Address to proceed</p>
+                <p className="text-lg font-semibold">
+                  Enter Address to proceed
+                </p>
                 <FaWindowClose
                   onClick={() => {
                     setTakingAddress(false);
