@@ -118,7 +118,22 @@ app.get('/home-search', async (req, res) => {
   }
 });
 
+app.put('/save-address',async(req,res)=>{
+  try{
+    const {email,address}=req.body
+    const updatedUser=await User.findOneAndUpdate({email},{$set:{address}},{new:true})
+    res.json("Saved address")
+  }catch(err){
+    console.error("Error saving address:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+})
 
+app.get('/get-products',async(req,res)=>{
+  const query=req.query.search;
+  const ProductData = await Product.find({seller:query})
+  res.json(ProductData)
+})
 
 app.listen(port,()=>{
     console.log(`Server running at http://localhost:${port}`)
